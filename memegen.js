@@ -72,6 +72,7 @@ form.addEventListener("formdata", event => {
 function memeOperation(e) {
     e.preventDefault();
     new FormData(form);
+    e.target.reset();
     // console.log("Let's look at the event object!", e);
 }
 
