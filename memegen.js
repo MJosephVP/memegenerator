@@ -15,10 +15,15 @@ form.addEventListener("submit", memeOperation)
 form.addEventListener("formdata", event => {
     currentID++;
     const data = event.formData;
-    let memeTile = create_memeTile();
-    memeTile.append(create_d1())
-    memeTile.append(create_d2())
-    memeTile.append(create_img())
+
+    const values = [...data.values()];
+    console.log(values);
+
+
+    let memeTile = create_memeTile(currentID);
+    memeTile.appendChild(create_d1(values.shift()))
+    memeTile.appendChild(create_d2(values.shift()))
+    memeTile.appendChild(create_img(values.shift()))
     gallery.appendChild(memeTile);
     
 
@@ -26,33 +31,33 @@ form.addEventListener("formdata", event => {
     const entries = [...data.entries()];
     console.log(entries);
 
-    const values = [...data.values()];
-    console.log(values);
 
 
-    function create_d1() {
+
+    function create_d1(activeText) {
         let d1 = document.createElement('div');
-        d1.innerHTML = 'hello';
+        d1.innerHTML = activeText;
         d1.className = 'active-top-text';
         return d1
     }
 
-    function create_d2() {
+    function create_d2(activeText) {
         let d2 = document.createElement('div');
-        d2.innerHTML = 'goodbye';
+        d2.innerHTML = activeText;
         d2.className = 'active-bottom-text';
         return d2
     }
 
-    function create_img() {
+    function create_img(activeText) {
         let img1 = document.createElement('img');
-        img1.src = 'https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
+        img1.src = activeText;
         img1.className = 'meme-image';
         return img1
     }
 
-    function create_memeTile() {
+    function create_memeTile(currentID) {
         let tile1 = document.createElement('div');
+        tile1.id = currentID
         tile1.className = 'meme-tile';
         return tile1
     }
