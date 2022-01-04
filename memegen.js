@@ -1,16 +1,11 @@
 const form = document.forms[0];
 const gallery = document.querySelector('.meme-gallery');
-let p = document.createElement("p")
 let currentID = 1000;
 
-function memeOperation(e) {
-    e.preventDefault();
-    new FormData(form);
-    // console.log("Let's look at the event object!", e);
-}
-
-
 form.addEventListener("submit", memeOperation)
+gallery.addEventListener("click", selfDestruct)
+
+
 
 form.addEventListener("formdata", event => {
     currentID++;
@@ -19,11 +14,13 @@ form.addEventListener("formdata", event => {
     const values = [...data.values()];
     console.log(values);
 
-
     let memeTile = create_memeTile(currentID);
+    
     memeTile.appendChild(create_d1(values.shift()))
     memeTile.appendChild(create_d2(values.shift()))
     memeTile.appendChild(create_img(values.shift()))
+    memeTile.appendChild(create_deleteButton())
+
     gallery.appendChild(memeTile);
     
 
@@ -33,6 +30,7 @@ form.addEventListener("formdata", event => {
 
 
 
+    
 
     function create_d1(activeText) {
         let d1 = document.createElement('div');
@@ -61,4 +59,24 @@ form.addEventListener("formdata", event => {
         tile1.className = 'meme-tile';
         return tile1
     }
+
+    function create_deleteButton() {
+        let dele1 = document.createElement('button');
+        dele1.className = 'delete-button'
+        dele1.type = "button";
+        dele1.innerHTML = "X"
+        return dele1
+    }
 });
+
+function memeOperation(e) {
+    e.preventDefault();
+    new FormData(form);
+    // console.log("Let's look at the event object!", e);
+}
+
+function selfDestruct(e){
+    if (e.target.className == "delete-button") {
+        e.target.parentNode.remove();  
+    }
+}
