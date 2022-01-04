@@ -18,15 +18,15 @@
             <h3>Create custom Memes</h3>
         </div>
         <div>
-            <form>
+            <form class="meme-form">
             <label for="meme-url">Meme URL:
-                <input type="url" placeholder="Enter Meme URL" name="submitted-url" id="meme-url">
+                <input type="text" placeholder="Enter Meme URL" name="submitted-url" id="meme-url" required>
             </label>
             <label for="top-text">Top Text:
-                <input type="text" placeholder="Words on top" name="submitted-top" id="top-text">
+                <input type="text" placeholder="Words on top" name="submitted-top" id="top-text" required>
             </label>
             <label for="bot-text">Bottom Text:
-                <input type="text" placeholder="Words on bottom" name="submitted-bottom" id="bot-text">
+                <input type="text" placeholder="Words on bottom" name="submitted-bottom" id="bot-text" required>
             </label>
             <input type="submit" value="Generate Meme" />
 
@@ -39,6 +39,6 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <script src="" async defer></script>
+        <script src="memegen.js" async defer></script>
     </body>
 </html>
