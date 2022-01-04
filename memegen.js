@@ -1,4 +1,6 @@
 const form = document.forms[0];
+const gallery = document.querySelector('.meme-gallery');
+let p = document.createElement("p")
 
 function memeOperation(e) {
     e.preventDefault();
@@ -18,5 +20,7 @@ form.addEventListener("formdata", event => {
 
     const values = [...data.values()];
     console.log(values);
+
+    gallery.append(p)
 
 });
